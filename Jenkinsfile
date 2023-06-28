@@ -72,7 +72,7 @@ pipeline{
                         BUILD_NUMBER="${BUILD_NUMBER}"
                         git branch dev
                         sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" manifest/deployment.yaml
-                        git checkout master
+                        git checkout main
                         git merge dev
                         git add manifest/deployment.yaml
                         
