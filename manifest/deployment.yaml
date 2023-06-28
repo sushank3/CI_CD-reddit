@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: reddit-clone
-        image: sushank3/ci_cd-reddit:6
+        image: sushank3/ci_cd-reddit:replaceImageTag
         ports:
         - containerPort: 3000
 
