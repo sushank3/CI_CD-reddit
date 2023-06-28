@@ -73,8 +73,6 @@ pipeline{
                         git branch
                         sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" manifest/deployment.yaml
                         git branch
-                        git checkout main
-                        git branch
                         git status
                         git branch
                         git add manifest/deployment.yaml
