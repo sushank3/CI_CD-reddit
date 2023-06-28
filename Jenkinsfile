@@ -72,7 +72,7 @@ pipeline{
                         
                         BUILD_NUMBER="${BUILD_NUMBER}"
 
-                        CURRENT_IMAGE_VERSION=$(grep -oE ':v[0-9]+' manifest/deployment.yaml | cut -d' ' -f2)
+                        CURRENT_IMAGE_VERSION=$(grep -oE ':v[0-9]+' manifest/deployment.yaml | cut -d':' -f2)
 
                         
 
