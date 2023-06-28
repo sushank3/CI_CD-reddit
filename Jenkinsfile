@@ -70,6 +70,7 @@ pipeline{
                         git config user.email "sushankkr3@gmail.com"
                         git config user.name "Sushank Kumar"
                         BUILD_NUMBER="${BUILD_NUMBER}"
+                        git checkout main
                         git branch
                         sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" manifest/deployment.yaml
                         git branch
