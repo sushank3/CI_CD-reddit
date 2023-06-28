@@ -69,8 +69,6 @@ pipeline{
                     sh '''
                         git config user.email "sushankkr3@gmail.com"
                         git config user.name "Sushank Kumar"
-                         // Checkout the repository
-                        checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/sushank3/CI_CD-reddit.git']]])
                         
                         BUILD_NUMBER="${BUILD_NUMBER}"
 
