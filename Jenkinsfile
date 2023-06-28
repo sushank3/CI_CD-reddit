@@ -71,6 +71,7 @@ pipeline{
                         git config user.name "Sushank Kumar"
                         BUILD_NUMBER="${BUILD_NUMBER}"
                         sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" manifest/deployment.yaml
+                        git checkout main
                         git status
                         git add manifest/deployment.yaml
                         git commit -m "Update deployment image to version ${BUILD_NUMBER}"
