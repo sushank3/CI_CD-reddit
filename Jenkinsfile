@@ -72,9 +72,11 @@ pipeline{
                         
                         BUILD_NUMBER="${BUILD_NUMBER}"
 
-                        IMAGE_VERSION_PLACEHOLDER="replaceImageTag"
+                        CURRENT_IMAGE_VERSION=$(grep -oE 'image_version:[0-9]+' manifest/deployment.yaml | cut -d' ' -f2)
 
-                        sed -i "s/${IMAGE_VERSION_PLACEHOLDER}/${BUILD_NUMBER}/g" manifest/deployment.yaml
+                        // IMAGE_VERSION_PLACEHOLDER="replaceImageTag"
+
+                        sed -i "s/${CURRENT_IMAGE_VERSION}/${BUILD_NUMBER}/g" manifest/deployment.yaml
                         
                     
                         git add manifest/deployment.yaml
