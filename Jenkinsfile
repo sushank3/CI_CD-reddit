@@ -1,5 +1,5 @@
 pipeline{
-
+// IMAGE_VERSION_PLACEHOLDER="replaceImageTag"
     agent any
     // agent {
     //     docker {
@@ -74,7 +74,7 @@ pipeline{
 
                         CURRENT_IMAGE_VERSION=$(grep -oE 'image_version:[0-9]+' manifest/deployment.yaml | cut -d' ' -f2)
 
-                        // IMAGE_VERSION_PLACEHOLDER="replaceImageTag"
+                        
 
                         sed -i "s/${CURRENT_IMAGE_VERSION}/${BUILD_NUMBER}/g" manifest/deployment.yaml
                         
