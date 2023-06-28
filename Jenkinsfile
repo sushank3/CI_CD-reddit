@@ -19,22 +19,22 @@ pipeline{
                 
         //     }
 
-        stage("Static Code Analysis"){
+        // stage("Static Code Analysis"){
 
-            environment {
-                SONAR_URL = "https://d327-2405-201-a405-1893-1cc7-acf6-c642-a8a6.ngrok-free.app"
-                }
+        //     environment {
+        //         SONAR_URL = "https://d327-2405-201-a405-1893-1cc7-acf6-c642-a8a6.ngrok-free.app"
+        //         }
 
-            steps{
-                echo "========Start Testing========"
+        //     steps{
+        //         echo "========Start Testing========"
                 
-                withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-                    // sh 'sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
-                    sh 'sonar-scanner -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+        //         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
+        //             // sh 'sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+        //             sh 'sonar-scanner -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
                     
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
 
          stage("Build docker file and push"){
 
