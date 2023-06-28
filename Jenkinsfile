@@ -69,11 +69,11 @@ pipeline{
                     sh '''
                         git config user.email "sushankkr3@gmail.com"
                         git config user.name "Sushank Kumar"
-                        BUILD_NUMBER="v${BUILD_NUMBER}"
-                        sed -i "s/replaceImageTag/v${BUILD_NUMBER}/g" manifest/deployment.yaml
+                        BUILD_NUMBER="${BUILD_NUMBER}"
+                        sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" manifest/deployment.yaml
                         git status
                         git add manifest/deployment.yaml
-                        git commit -m "Update deployment image to version v${BUILD_NUMBER}"
+                        git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                         git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                     '''
                 }
