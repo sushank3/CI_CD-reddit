@@ -56,6 +56,28 @@ pipeline{
                 }
             }
         }
+
+        stage('Update Deployment File') {
+
+            environment {
+                GIT_REPO_NAME = "CI_CD-reddit"
+                GIT_USER_NAME = "sushank3"
+            }
+        
+            steps {
+                withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
+                    sh '''
+                        git config user.email "sushankkr3@gmail.com"
+                        git config user.name "Sushank Kumar"
+                        BUILD_NUMBER=${BUILD_NUMBER}
+                        sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" manifest/deployment.yml
+                        git add manifests/deployment.yml
+                        git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                        git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                    '''
+                }
+            }
+        }
     }
     
 }
