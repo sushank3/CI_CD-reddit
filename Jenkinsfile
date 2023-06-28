@@ -67,11 +67,11 @@ pipeline{
             steps {
                 withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
                     sh '''
-
-                         // Checkout the repository
-                        checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/sushank3/CI_CD-reddit.git']]])
                         git config user.email "sushankkr3@gmail.com"
                         git config user.name "Sushank Kumar"
+                         // Checkout the repository
+                        checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/sushank3/CI_CD-reddit.git']]])
+                        
                         BUILD_NUMBER="${BUILD_NUMBER}"
 
                         sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" manifest/deployment.yaml
