@@ -76,7 +76,7 @@ pipeline{
 
                         
 
-                        sed -i "s/v${CURRENT_IMAGE_VERSION}/v${BUILD_NUMBER}/g" manifest/deployment.yaml
+                        sed -i "s/${CURRENT_IMAGE_VERSION}/v${BUILD_NUMBER}/g" manifest/deployment.yaml
                         
                     
                         git add manifest/deployment.yaml
