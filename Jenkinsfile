@@ -72,11 +72,11 @@ pipeline{
                         
                         BUILD_NUMBER="${BUILD_NUMBER}"
 
-                        CURRENT_IMAGE_VERSION=$(grep -oE 'sushank3/ci_cd-reddit:[0-9]+' manifest/deployment.yaml | cut -d':' -f2)
+                        CURRENT_IMAGE_VERSION=$(grep -oE 'sushank3/ci_cd-reddit:v[0-9]+' manifest/deployment.yaml | cut -d':' -f2)
 
                         
 
-                        sed -i "s/${CURRENT_IMAGE_VERSION}/${BUILD_NUMBER}/g" manifest/deployment.yaml
+                        sed -i "s/v${CURRENT_IMAGE_VERSION}/v${BUILD_NUMBER}/g" manifest/deployment.yaml
                         
                     
                         git add manifest/deployment.yaml
