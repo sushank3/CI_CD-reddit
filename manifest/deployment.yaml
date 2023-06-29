@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: reddit-clone
-        image: sushank3/ci_cd-reddit:v0
+        image: sushank3/ci_cd-reddit:v23
         ports:
         - containerPort: 3000
 
